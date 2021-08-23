@@ -6,10 +6,10 @@
           <el-input v-model="form.username" placeholder="请填写用户名" />
         </el-form-item>
         <el-form-item label="密码" prop="password">
-          <el-input type="password" v-model="form.password" placeholder="密码" />
+          <el-input type="password" v-model="form.password" placeholder="密码" show-password />
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submit">登录</el-button>
+          <el-button type="primary" :loading="submitLoading" @click="submit">登录</el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -26,6 +26,7 @@ const form = reactive({
   password: ''
 })
 
+const submitLoading = ref(false)
 const forms = ref(null)
 
 const rules = reactive({
@@ -42,8 +43,10 @@ const rules = reactive({
 })
 
 const login = async () => {
+  submitLoading.value = true
   const res = await api.login.login(form)
   localStorage.token = res.data.token
+  submitLoading.value = false
   router.push('/')
   // this.$message({
   //   type: 'success',
