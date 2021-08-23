@@ -3,6 +3,14 @@ import Home from '../views/Home.vue'
 
 const routes = [
   {
+    path: '/login',
+    name: 'login',
+    meta: {
+      isPublic: true
+    },
+    component: () => import('../views/Login/index')
+  },
+  {
     path: '/',
     name: 'Home',
     component: Home
@@ -20,6 +28,13 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes
+})
+
+router.beforeEach((to) => {
+  if (!to.meta.isPublic && !localStorage.token) {
+    return `/login`
+  }
+  return true
 })
 
 export default router
