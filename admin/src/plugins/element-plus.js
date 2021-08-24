@@ -20,8 +20,10 @@ import {
   ElContainer,
   ElDropdown,
   ElDropdownMenu,
-  ElDropdownItem
-
+  ElDropdownItem,
+  ElTable,
+  ElTableColumn,
+  ElPopconfirm
 } from 'element-plus';
 
 const components = [
@@ -41,7 +43,10 @@ const components = [
   ElDropdownItem,
   ElAside,
   ElSubmenu,
-  ElMenuItemGroup
+  ElMenuItemGroup,
+  ElTable,
+  ElTableColumn,
+  ElPopconfirm
 ]
 
 const plugins = [

@@ -7,18 +7,46 @@ let router = express.Router({
 })
 
 // 创建资源
-router.post('/api/rest/', (req, res) => {
-  console.log('create')
-  res.send('hello' + req.params.name)
+router.post('/api/rest/:resource', async (req, res) => {
+  const { username, password } = req.body
+  const user = await AdminUser.findOne({ username })
+  if (user) {
+    return res.status(200).json({
+      errcode: 2000,
+      data: '',
+      message: '用户名已存在'
+    })
+  }
+  const createStatus = await AdminUser.create({
+    username,
+    password
+  })
+  if (createStatus) {
+    return res.status(200).json({
+      errcode: 0,
+      message: '创建成功'
+    })
+  }
 })
 
-router.get('/api', (req, res) => {
-  res.send('ok')
+// 获取资源
+router.get('/api/rest/:resource', async(req, res) => {
+  const items = await AdminUser.find().limit(100)
+  res.status(200).json({
+    errcode: 0,
+    data: {
+      list: items
+    }
+  })
 })
 
 router.post('/api/login', async (req, res) => {
   const { username, password } = req.body
   // 1.根据用户名找用户
+  // const data = await AdminUser.create({
+  //   username,
+  //   password
+  // })
   const user = await AdminUser.findOne({
     username
   })

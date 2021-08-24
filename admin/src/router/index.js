@@ -17,7 +17,14 @@ const routes = [
     redirect: '/admin_users/create',
     children: [
       { path: '/categories/create', component: () => import('../views/CategoryEdit/index') },
+      { path: '/categories/list', component: () => import('../views/CategoryList/index') },
       { path: '/admin_users/create', component: () => import('../views/AdminUserEdit/index') },
+      {
+        path: "/admin_users/edit/:id",
+        component: () => import('../views/AdminUserEdit/index'),
+        props: true
+      },
+      { path: '/admin_users/list', component: () => import('../views/AdminUserList/index') },
     ]
   },
   {

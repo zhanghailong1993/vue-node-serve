@@ -39,7 +39,7 @@ const createAdmin = async () => {
   const res = await api.setting.createAdmin(params).finally(() => submitLoading.value = false)
   const { errcode } = res
   if (errcode === 0) {
-    internalInstance.appContext.config.globalProperties.$message('创建成功')
+    internalInstance.appContext.config.globalProperties.$message.success('创建成功')
   }
 }
 
