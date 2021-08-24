@@ -7,8 +7,13 @@ let router = express.Router({
 })
 
 // 创建资源
-router.get('/:name', (req, res) => {
+router.post('/api/rest/', (req, res) => {
+  console.log('create')
   res.send('hello' + req.params.name)
+})
+
+router.get('/api', (req, res) => {
+  res.send('ok')
 })
 
 router.post('/api/login', async (req, res) => {

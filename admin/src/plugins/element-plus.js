@@ -9,7 +9,18 @@ import {
   ElLoading,
   ElMessage,
   ElMessageBox,
-  ElNotification
+  ElNotification,
+  ElMenu,
+  ElAside,
+  ElSubmenu,
+  ElMenuItemGroup,
+  ElMenuItem,
+  ElHeader,
+  ElMain,
+  ElContainer,
+  ElDropdown,
+  ElDropdownMenu,
+  ElDropdownItem
 
 } from 'element-plus';
 
@@ -19,7 +30,18 @@ const components = [
   ElSelect,
   ElForm,
   ElInput,
-  ElFormItem
+  ElFormItem,
+  ElMenu,
+  ElMenuItem,
+  ElHeader,
+  ElContainer,
+  ElMain,
+  ElDropdown,
+  ElDropdownMenu,
+  ElDropdownItem,
+  ElAside,
+  ElSubmenu,
+  ElMenuItemGroup
 ]
 
 const plugins = [

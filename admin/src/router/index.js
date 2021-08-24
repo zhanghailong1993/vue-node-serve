@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import Main from '../views/Main.vue'
 
 const routes = [
   {
@@ -12,8 +12,13 @@ const routes = [
   },
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'main',
+    component: Main,
+    redirect: '/admin_users/create',
+    children: [
+      { path: '/categories/create', component: () => import('../views/CategoryEdit/index') },
+      { path: '/admin_users/create', component: () => import('../views/AdminUserEdit/index') },
+    ]
   },
   {
     path: '/about',
