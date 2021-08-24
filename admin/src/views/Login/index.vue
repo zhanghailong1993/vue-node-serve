@@ -44,14 +44,13 @@ const rules = reactive({
 
 const login = async () => {
   submitLoading.value = true
-  const res = await api.login.login(form)
-  localStorage.token = res.data.token
-  submitLoading.value = false
-  router.push('/')
-  // this.$message({
-  //   type: 'success',
-  //   message: '登录成功'
-  // })
+  const res = await api.login.login(form).finally(() => submitLoading.value = false)
+  const { errcode, data = {} } = res
+  if (errcode === 0) {
+    const { token = '' } = data
+    localStorage.token = token
+    router.push('/')
+  }
 }
 
 const submit = () => {
