@@ -1,6 +1,7 @@
 const express = require('express')
 const jwt = require('jsonwebtoken')
 const AdminUser = require('../../models/AdminUser')
+const Categories = require('../../models/Categories')
 
 let router = express.Router({
   mergeParams: true
@@ -27,6 +28,15 @@ router.post('/api/rest/:resource', async (req, res) => {
       message: '创建成功'
     })
   }
+})
+
+// 删除资源
+router.delete('/api/rest/:resource/:id', async (req, res) => {
+  await AdminUser.findByIdAndRemove(req.params.id)
+  res.status(200).json({
+    errcode: 0,
+    message: ''
+  })
 })
 
 // 获取资源
@@ -77,6 +87,16 @@ router.post('/api/login', async (req, res) => {
     message: ''
   })
  
+})
+
+router.post('/api/categories/:resource', async (req, res) => {
+  const items = await Categories.create(req.body)
+  if (items) {
+    res.status(200).json({
+      errcode: 0,
+      message: 0
+    })
+  }
 })
 
 module.exports = router
