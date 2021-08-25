@@ -16,8 +16,8 @@
             title="这是一段内容确定删除吗？"
             @confirm="remove(scope.row)"
           >
-          <template #reference>
-            <el-button type="text" size="small">删除</el-button>
+            <template #reference>
+              <el-button type="text" size="small">删除</el-button>
             </template>
           </el-popconfirm>
         </template>

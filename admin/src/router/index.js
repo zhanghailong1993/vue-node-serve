@@ -14,8 +14,8 @@ const routes = [
     path: '/',
     name: 'main',
     component: Main,
-    redirect: '/admin_users/create',
     children: [
+      { path: '', component: () => import('../views/About.vue') },
       { path: '/categories/create', component: () => import('../views/CategoryEdit/index') },
       { path: '/categories/list', component: () => import('../views/CategoryList/index') },
 
@@ -44,14 +44,6 @@ const routes = [
       { path: '/ads/list', component: () => import('../views/AdList/index') }
 
     ]
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   }
 ]
 
