@@ -23,7 +23,14 @@ import {
   ElDropdownItem,
   ElTable,
   ElTableColumn,
-  ElPopconfirm
+  ElPopconfirm,
+  ElUpload,
+  ElTabs,
+  ElTabPane,
+  ElOption,
+  ElRate,
+  ElRow,
+  ElCol
 } from 'element-plus';
 
 const components = [
@@ -46,7 +53,14 @@ const components = [
   ElMenuItemGroup,
   ElTable,
   ElTableColumn,
-  ElPopconfirm
+  ElPopconfirm,
+  ElUpload,
+  ElTabs,
+  ElTabPane,
+  ElOption,
+  ElRate,
+  ElRow,
+  ElCol
 ]
 
 const plugins = [
