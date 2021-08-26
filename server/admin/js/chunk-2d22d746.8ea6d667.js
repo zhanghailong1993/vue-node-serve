@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d22d746"],{f820:function(e,n,c){"use strict";c.r(n);var t=c("7a23"),o={class:"about"},a=Object(t["createElementVNode"])("h1",null,"欢迎来到德莱联盟！！！",-1),r=[a];function u(e,n){return Object(t["openBlock"])(),Object(t["createElementBlock"])("div",o,r)}const d={};d.render=u;n["default"]=d}}]);
+//# sourceMappingURL=chunk-2d22d746.8ea6d667.js.map
