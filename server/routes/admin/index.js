@@ -90,6 +90,13 @@ router.post('/api/login', async (req, res) => {
 })
 
 router.post('/api/categories/:resource', async (req, res) => {
+  const hasItem = await Categories.findOne(req.body)
+  if (hasItem) {
+    return res.status(200).json({
+      errcode: 2000,
+      message: '类名已存在'
+    })
+  }
   const items = await Categories.create(req.body)
   if (items) {
     res.status(200).json({

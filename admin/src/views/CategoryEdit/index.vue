@@ -33,12 +33,11 @@ const rules = reactive({
 
 const submit = async () => {
   saveLoading.value = true
-  const res = await api.setting.createCategoy(model)
+  const res = await api.setting.createCategoy(model).finally(() => saveLoading.value = false)
   const { errcode } = res
   if (errcode === 0) {
 		internalInstance.appContext.config.globalProperties.$message.success('保存成功')
   }
-  saveLoading.value = false
 }
 
 const save = () => {
