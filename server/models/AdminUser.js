@@ -8,6 +8,6 @@ const blogSchema = new Schema({
     select: true,
     set: (val) => require('bcrypt').hashSync(val, 10)
   }
-})
+}, {timestamps: {createdAt: 'created', updatedAt: 'updated'}})
 
 module.exports = mongoose.model('users', blogSchema)

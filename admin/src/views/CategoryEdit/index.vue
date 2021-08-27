@@ -2,8 +2,18 @@
   <div>
     <h1>新建分类</h1>
     <el-form ref="forms" :model="model" :rules="rules" label-width="80px">
-      <el-form-item prop="categories_name" label="名称">
-        <el-input v-model="model.categories_name" clearable></el-input>
+      <el-form-item prop="parent" label="上级分类">
+        <el-select v-model="model.parent" placeholder="选择分类">
+          <el-option
+            v-for="item in parents"
+            :label="item.name"
+            :value="item._id"
+            :key="item._id"
+          ></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item prop="name" label="名称">
+        <el-input v-model="model.name" clearable></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" :loading="saveLoading" @click="save">保存</el-button>
@@ -18,14 +28,23 @@ import * as api from '@/api'
 const forms = ref(null)
 const saveLoading = ref(false)
 const internalInstance = getCurrentInstance()
+const parents = ref([])
 const model = reactive({
-  categories_name: ''
+  name: '',
+  parent: ''
 })
 const rules = reactive({
-  categories_name: [
+  name: [
     {
       required: true,
       message: '请输入名称',
+      trigger: 'blur'
+    }
+  ],
+  parent: [
+    {
+      required: true,
+      message: '请选择分类',
       trigger: 'blur'
     }
   ]
@@ -47,5 +66,17 @@ const save = () => {
     }
   })
 }
+
+const fetchParents = async () => {
+  const res = await api.setting.getParents()
+  const { errcode, data } = res
+  if (errcode === 0) {
+    const { list } = data
+    parents.value = list
+  }
+}
+
+
+fetchParents()
 
 </script>

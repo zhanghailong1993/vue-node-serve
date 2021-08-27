@@ -4,6 +4,7 @@
     <el-table :data="items" style="width: 100%" :loading="tableLoading" >
       <el-table-column prop="_id" label="ID" width="480"></el-table-column>
       <el-table-column prop="name" label="分类名称"></el-table-column>
+      <el-table-column prop="created" label="创建时间"></el-table-column>
       <el-table-column fixed="right" label="操作" width="180">
         <template #default>
           <el-button

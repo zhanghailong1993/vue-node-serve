@@ -1,7 +1,6 @@
 const express = require('express')
 const cors = require('cors')
 const expressJWT = require('express-jwt')
-const resourceMiddleware = require('./middleware/resource')
 
 const port = 3000
 const app = express()
@@ -25,9 +24,11 @@ app.use(expressJWT({
   path: ['/admin/api/login']
 }))
 
-require('./plugins/db')(app)
+app.use('/admin', express.static(__dirname + '/admin'))
 
-app.use('/admin', resourceMiddleware(), require('./routes/admin'))
+require('./plugins/db')(app)
+// resourceMiddleware()
+require('./routes/admin')(app)
 
 app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {   
