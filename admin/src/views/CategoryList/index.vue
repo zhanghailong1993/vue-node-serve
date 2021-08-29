@@ -6,7 +6,7 @@
       <el-table-column prop="name" label="分类名称"></el-table-column>
       <el-table-column prop="created" label="创建时间"></el-table-column>
       <el-table-column fixed="right" label="操作" width="180">
-        <template #default>
+        <template #default="scope">
           <el-button
             type="text"
             size="small"
@@ -17,6 +17,7 @@
             type="text"
             size="small"
             icon="el-icon-delete"
+            @click="remove(scope.row)"
             >删除</el-button
           >
         </template>
@@ -40,4 +41,12 @@
     }
   }
   fetch()
+
+  const remove = async ({ _id: id }) => {
+    const res = await api.setting.deleteCategory(id)
+    const { errcode } = res
+    if (errcode === 0) {
+      fetch()
+    }
+  }
   </script>

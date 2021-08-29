@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-var items = new Schema({
+const items = new Schema({
     name: String,
     parent: { type: Schema.Types.ObjectId, ref: 'categories' }
 }, {timestamps: {createdAt: 'created', updatedAt: 'updated'}})

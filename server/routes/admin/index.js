@@ -33,7 +33,7 @@ module.exports = app => {
 
   // 删除资源
   router.delete('/api/rest/:resource/:id', async (req, res) => {
-    await AdminUser.findByIdAndRemove(req.params.id)
+    await req.Model.findByIdAndRemove(req.params.id)
     res.status(200).json({
       errcode: 0,
       message: ''

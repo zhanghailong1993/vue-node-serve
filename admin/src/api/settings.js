@@ -12,11 +12,17 @@ const getParents = () => http.get('rest/categories').then(({ data}) => data)
 
 const getCateGoryList = () => http.get('rest/categories').then(({ data }) => data)
 
+const deleteCategory = (id) => http.delete(`rest/categories/${id}`).then(({ data }) => data)
+
+const createArticle = (data) => http.post('rest/articles', data).then(({ data }) => data)
+
 export default {
   createAdmin,
   deleteUser,
   getUserList,
   createCategoy,
   getParents,
-  getCateGoryList
+  getCateGoryList,
+  deleteCategory,
+  createArticle
 }

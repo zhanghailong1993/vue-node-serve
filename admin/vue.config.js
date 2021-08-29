@@ -5,7 +5,7 @@ function resolve () {
 }
 
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? '/admin/' : '/',
+  publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
   outputDir: '../server/admin',
   chainWebpack: config => {
     // 添加别名
