@@ -16,6 +16,8 @@ const deleteCategory = (id) => http.delete(`rest/categories/${id}`).then(({ data
 
 const createArticle = (data) => http.post('rest/articles', data).then(({ data }) => data)
 
+const getArticle = () => http.get('rest/articles').then(({ data }) => data)
+
 export default {
   createAdmin,
   deleteUser,
@@ -24,5 +26,6 @@ export default {
   getParents,
   getCateGoryList,
   deleteCategory,
-  createArticle
+  createArticle,
+  getArticle
 }

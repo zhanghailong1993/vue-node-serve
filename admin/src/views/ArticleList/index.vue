@@ -28,6 +28,7 @@
 <script setup>
   import { ref } from 'vue'
   import { useRouter } from 'vue-router'
+  import * as api from '@/api'
   
   const router = useRouter()
   const items = ref([])
@@ -35,4 +36,14 @@
   const remove = () => {
   
   }
+
+  const fetch = async () => {
+    const res = await api.setting.getArticle()
+    const { errcode, data } = res
+    if (errcode === 0) {
+      items.value = data?.list || []
+    }
+  }
+  fetch()
+
   </script>
